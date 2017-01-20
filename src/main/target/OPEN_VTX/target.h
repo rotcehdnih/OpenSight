@@ -17,11 +17,11 @@
 
 #pragma once
 
-#define TARGET_BOARD_IDENTIFIER "XF4C"
+#define TARGET_BOARD_IDENTIFIER "OVTX"
 
 #define CONFIG_START_FLASH_ADDRESS (0x08080000) //0x08080000 to 0x080A0000 (FLASH_Sector_8)
 
-#define USBD_PRODUCT_STRING     "Xracer F4"
+#define USBD_PRODUCT_STRING     "Open VTX"
 //#ifdef OPBL
 //#define USBD_SERIALNUMBER_STRING "0x8020000"
 //#endif
@@ -54,27 +54,6 @@
 //#define ENSURE_MPU_DATA_READY_IS_LOW
 #define EXTI_CALLBACK_HANDLER_COUNT 1 // MPU data ready (mag disabled)
 
-
-
-//#define MAG
-//#define USE_MAG_HMC5883
-//#define MAG_HMC5883_ALIGN       CW90_DEG
-
-//#define USE_MAG_NAZA
-//#define MAG_NAZA_ALIGN          CW180_DEG_FLIP
-
-//#define BARO
-//#define USE_BARO_MS5611
-
-//#define PITOT
-//#define USE_PITOT_MS4525
-//#define MS4525_BUS I2C_DEVICE_EXT
-
-//#define M25P16_CS_PIN           PB3
-//#define M25P16_SPI_INSTANCE     SPI3
-
-//#define USE_FLASHFS
-//#define USE_FLASH_M25P16
 
 #define USE_VCP
 #define VBUS_SENSING_PIN        PC5
