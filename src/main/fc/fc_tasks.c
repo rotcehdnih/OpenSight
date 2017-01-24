@@ -34,6 +34,7 @@
 #include "drivers/stack_check.h"
 #include "drivers/vtx_common.h"
 
+
 #include "fc/config.h"
 #include "fc/fc_msp.h"
 #include "fc/fc_tasks.h"
@@ -54,6 +55,7 @@
 #include "io/serial.h"
 #include "io/transponder_ir.h"
 #include "io/vtx_tramp.h" // Will be gone
+#include "io/openvtx.h"
 
 #include "msp/msp_serial.h"
 
@@ -217,6 +219,17 @@ void taskVtxControl(uint32_t currentTime)
     vtxCommonProcess(currentTime);
 #endif
 }
+
+
+void taskopenVtxControl(uint32_t currentTime)
+{
+    if (ARMING_FLAG(ARMED))
+        return;
+
+#ifdef VTX_COMMON
+    OpenVtxUpdate(currentTime);
+#endif
+}
 #endif
 
 void fcTasksInit(void)
@@ -301,6 +314,7 @@ void fcTasksInit(void)
     setTaskEnabled(TASK_STACK_CHECK, true);
 #endif
 #ifdef VTX_CONTROL
+setTaskEnabled(TASK_OPENVTXCTRL, true);
 #if defined(VTX_SMARTAUDIO) || defined(VTX_TRAMP)
     setTaskEnabled(TASK_VTXCTRL, true);
 #endif
@@ -503,6 +517,13 @@ cfTask_t cfTasks[TASK_COUNT] = {
     [TASK_VTXCTRL] = {
         .taskName = "VTXCTRL",
         .taskFunc = taskVtxControl,
+        .desiredPeriod = TASK_PERIOD_HZ(5),          // 5Hz @200msec
+        .staticPriority = TASK_PRIORITY_IDLE,
+    },
+
+    [TASK_OPENVTXCTRL] = {
+        .taskName = "OPENVTXCTRL",
+        .taskFunc = taskopenVtxControl,
         .desiredPeriod = TASK_PERIOD_HZ(5),          // 5Hz @200msec
         .staticPriority = TASK_PRIORITY_IDLE,
     },

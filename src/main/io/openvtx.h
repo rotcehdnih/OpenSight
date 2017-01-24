@@ -15,30 +15,13 @@
  * along with Cleanflight.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <stdbool.h>
-#include <stdint.h>
-
-#include "platform.h"
-
-#include "fc/fc_init.h"
-
-#include "scheduler/scheduler.h"
+/* Created by HecTech */
 
 
+#pragma once
 
-void main_step(void)
-{
-    scheduler();
-    processLoopback();
-}
+#include "common/time.h"
 
-#ifndef NOMAIN
-int main(void)
-{
-    init();
-    while (true) {
-        main_step();
+void OpenVtxInit(void);
 
-}
-}
-#endif
+void OpenVtxUpdate(timeUs_t currentTimeUs);

@@ -7,5 +7,6 @@ TARGET_SRC = \
             drivers/light_ws2811strip.c \
             drivers/light_ws2811strip_stm32f4xx.c\
             drivers/vtx_rtc6705.c \
-            io/vtx.c
+            io/vtx.c \
+            io/openvtx.c
 

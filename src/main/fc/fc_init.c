@@ -93,6 +93,7 @@
 #include "io/vtx.h"
 #include "io/vtx_smartaudio.h"
 #include "io/vtx_tramp.h"
+#include "io/openvtx.h"
 
 #include "scheduler/scheduler.h"
 
@@ -345,7 +346,9 @@ void init(void)
 #endif
 
 #ifdef VTX
+
     vtxInit();
+    OpenVtxInit();
 #endif
 
 #if defined(SONAR_SOFTSERIAL2_EXCLUSIVE) && defined(SONAR) && defined(USE_SOFTSERIAL2)

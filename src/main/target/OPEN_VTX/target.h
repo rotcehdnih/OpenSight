@@ -71,7 +71,7 @@
 #define UART6_RX_PIN            PC7
 #define UART6_TX_PIN            PC6
 
-#define SERIAL_PORT_COUNT       1 //VCP, USART1, USART3, USART6
+#define SERIAL_PORT_COUNT       4 //VCP, USART1, USART3, USART6
 
 #define USE_SPI
 
