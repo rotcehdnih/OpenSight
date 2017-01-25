@@ -45,7 +45,7 @@
 #include "fc/config.h"
 #include "fc/runtime_config.h"
 
-serialPort_t *VtxRXPORT = NULL;
+static serialPort_t *VtxRXPORT = NULL;
 
 void OpenVtxInit(void)
 {
@@ -58,6 +58,7 @@ void OpenVtxInit(void)
 void OpenVtxUpdate(timeUs_t currentTimeUs)
 {
 
+    UNUSED(currentTimeUs);
     while (serialRxBytesWaiting(VtxRXPORT)) {
     uint8_t c = serialRead(VtxRXPORT);
     rtc6705SetFreq(c);
